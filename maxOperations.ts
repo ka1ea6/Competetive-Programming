@@ -1,23 +1,21 @@
 function maxOperations(nums: number[], k: number): number {
-  let operations: number = 0;
-  for (let i = 0; i < nums.length; i++) {
-    let opposer!: number | null;
-    let j: number = 0;
-    while (!opposer) {
-      opposer =
-        nums.indexOf(k - nums[j]) === j
-          ? null
-          : nums[nums.indexOf(k - nums[j])];
-      if (j <= nums.length) j++;
-      if (j > nums.length) break;
-    }
-    nums.splice(i, 1);
-    if (opposer) {
-      operations++;
-      nums.splice(opposer, 1);
+  nums.sort((a, b) => {
+    return a - b;
+  });
+
+  let i: number = 0,
+    j: number = nums.length - 1,
+    ans: number = 0;
+  while (i < j) {
+    if (nums[i] + nums[j] == k) {
+      ans++;
+      i++;
+      j--;
+    } else if (nums[i] + nums[j] > k) {
+      j--;
+    } else {
+      i++;
     }
   }
-  return operations;
+  return ans;
 }
-console.log(maxOperations([1, 2, 3, 4], 5));
-// console.log(maxOperations([3, 1, 3, 4, 3], 6));
