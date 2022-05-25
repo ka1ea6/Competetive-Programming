@@ -9,4 +9,3 @@ function topKFrequent(nums: number[], k: number): number[] {
   sortArray.sort((a, b) => b[1] - a[1]);
   return sortArray.slice(0, k).map((el) => Number(el[0]));
 }
-console.log(topKFrequent([1, 1, 1, 2, 2, 3], 2));
