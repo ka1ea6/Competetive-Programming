@@ -1,6 +1,8 @@
 class MyQueue {
-  arr: number[] = [];
-  constructor() {}
+  arr!: number[];
+  constructor() {
+    this.arr = [];
+  }
 
   push(x: number): void {
     this.arr.push(x);
