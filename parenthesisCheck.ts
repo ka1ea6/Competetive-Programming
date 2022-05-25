@@ -29,4 +29,3 @@ function isValid(s: string): boolean {
   if (checkStack.length < 1) return true;
   else return false;
 }
-console.log(isValid("()[]{}"));
